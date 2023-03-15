@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+    <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+        <table name="logs" resource="default" engine="innodb" comment="Logs">
+            <column xsi:type="int" name="id" padding="11" unsigned="true" nullable="false" identity="true"/> 
+            <column xsi:type="varchar" name="searchterm" nullable="true"/> 
+            <column xsi:type="varchar" name="does_exists" nullable="true"/>  
+
+            <constraint xsi:type="primary" referenceId="PRIMARY"> 
+                <column name="id"/>  
+            </constraint>  
+
+        </table>  
+
+    </schema>  

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Sadri_Office::menu" title="Logs" module="Sadri_Office" sortOrder="100" resource="Sadri_Office::menu"/>
+        <add id="Sadri_Office::logs" title="Logs Data" module="Sadri_Office" sortOrder="10" action="logs/logs" resource="Sadri_Office::logs" parent="Sadri_Office::menu"/>
+    </menu>
+</config>

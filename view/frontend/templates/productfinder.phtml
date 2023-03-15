@@ -1,0 +1,35 @@
+<form autocomplete="off" class="my-module-search" action="<?= $block->getUrl('productfinder/search/result') ?>" method="POST">
+<div class="text-container">
+    <input id="text_input" list="suggestion_container" required="true" type="text" name="sku">
+    <datalist id="suggestion_container">
+    </datalist>
+    <input type="submit" value="SEARCH BY SKU">
+</div>
+</form>
+
+<script>
+require(['jquery', 'jquery/ui'], function($){
+    $(document).ready(function(){
+        $('#text_input').on('input', function() {
+            var input = $(this).val();
+            $.ajax({
+                url: '<?php echo $block->getUrl("productfinder/index/ajax"); ?>',
+                data: {input: input},
+                type: 'POST',
+                dataType: 'json',
+                success: function(response) {
+                    var suggestionContainer = $('#suggestion_container');
+                    suggestionContainer.empty();
+                    let seenValues = new Set(); 
+                    $.each(response, function(index, value) {
+                        if (!seenValues.has(value.searchterm)) {
+                            suggestionContainer.append("<option value="+value.searchterm+">" + value.searchterm + " </option> ");
+                            seenValues.add(value.searchterm);
+                        }
+                    });
+                }
+            });
+        });
+    });
+});
+</script>
